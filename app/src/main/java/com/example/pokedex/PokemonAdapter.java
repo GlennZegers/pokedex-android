@@ -1,6 +1,9 @@
 package com.example.pokedex;
 
+import android.graphics.Color;
+import android.graphics.Typeface;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +42,10 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.MyViewHo
             }
         });
         MyViewHolder vh = new MyViewHolder(v);
+        vh.textView.setTextSize(20);
+        vh.textView.setGravity(Gravity.CENTER_HORIZONTAL);
+        vh.textView.setTypeface(null, Typeface.BOLD);
+        vh.textView.setPadding(25,40,0,0);
         return vh;
     }
 
