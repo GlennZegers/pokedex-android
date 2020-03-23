@@ -23,8 +23,9 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
     }
 
     @Override
-    public void onItemSelected(String item) {
+    public void onItemSelected(String item, int index) {
         DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
+        f.setPokemonImage(index);
         f.setPokemon(item);
     }
 

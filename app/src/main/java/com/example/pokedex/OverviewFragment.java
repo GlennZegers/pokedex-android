@@ -137,6 +137,6 @@ public class OverviewFragment extends Fragment {
 
 
     interface OnItemSelected{
-        public void onItemSelected(String item);
+        public void onItemSelected(String item, int index);
     }
 }

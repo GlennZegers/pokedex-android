@@ -22,7 +22,6 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.MyViewHo
         public MyViewHolder(TextView v) {
             super(v);
             textView = v;
-
         }
     }
 
@@ -32,13 +31,21 @@ public class PokemonAdapter extends RecyclerView.Adapter<PokemonAdapter.MyViewHo
     }
 
     @Override
-    public PokemonAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public PokemonAdapter.MyViewHolder onCreateViewHolder(final ViewGroup parent, int viewType) {
         TextView v = (TextView) LayoutInflater.from(parent.getContext()).inflate(R.layout.pokemon_text_view, parent, false);
         v.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 TextView textView = (TextView) v;
-                listener.onItemSelected( textView.getText().toString());
+                int index = 0;
+                for (int i = 0; i < mDataset.length; i++)
+                {
+                    if(textView.getText().toString() == mDataset[i])
+                    {
+                        index = i + 1;
+                    }
+                    listener.onItemSelected( textView.getText().toString(), index);
+                }
             }
         });
         MyViewHolder vh = new MyViewHolder(v);

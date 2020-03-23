@@ -28,4 +28,9 @@ public class DetailFragment extends Fragment {
         TextView t = getView().findViewById(R.id.Name);
         t.setText(pokemon);
     }
+
+    public void setPokemonImage(int index)
+    {
+
+    }
 }
