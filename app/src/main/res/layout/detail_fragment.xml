@@ -10,4 +10,10 @@
         android:text="TextView"
         android:textAlignment="center" />
 
+    <Button
+        android:id="@+id/name_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GIve nickname" />
+
 </LinearLayout>
