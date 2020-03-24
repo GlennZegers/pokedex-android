@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
     public void onItemSelected(String item, int index) {
         DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        boolean test = sharedPreferences.getBoolean("switch", false);
+        boolean test = sharedPreferences.getBoolean("switch", true);
         if(test)
         {
             f.setImage(index);

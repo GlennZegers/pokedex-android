@@ -28,16 +28,7 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
-        test();
     }
-
-    public void test()
-    {
-//        SharedPreferences preferences = this.getSharedPreferences("switch", Context.MODE_PRIVATE);
-//        SharedPreferences preferences = this.getSharedPreferences("switch", Context.MODE_PRIVATE);
-        boolean isChecked = getIntent().getBooleanExtra("switch", false);
-    }
-
 
     public static class SettingsFragment extends PreferenceFragment {
         @Override

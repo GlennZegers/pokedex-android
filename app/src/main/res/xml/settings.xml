@@ -2,9 +2,9 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
         android:id="@+id/switch_titel"
-        android:defaultValue="true"
         android:key="switch"
         android:summaryOff="off"
         android:summaryOn="on"
+        android:defaultValue="true"
         android:title="Show Image"/>
 </PreferenceScreen>
