@@ -1,13 +1,19 @@
 package com.example.pokedex;
 
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,6 +28,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class DetailFragment extends Fragment {
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);;
@@ -43,7 +50,6 @@ public class DetailFragment extends Fragment {
     public void setImage(int index)
     {
         String url = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/" + index + ".png";
-
         ImageView image = getView().findViewById(R.id.imageView);
         image.setMinimumWidth(500);
         image.setMinimumHeight(500);
@@ -60,5 +66,11 @@ public class DetailFragment extends Fragment {
 
                     }
                 });
+    }
+
+    public void removeImage()
+    {
+        ImageView image = getView().findViewById(R.id.imageView);
+        image.setImageResource(0);
     }
 }

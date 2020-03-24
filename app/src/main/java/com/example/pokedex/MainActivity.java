@@ -5,8 +5,10 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,7 +30,16 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
     @Override
     public void onItemSelected(String item, int index) {
         DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
-        f.setImage(index);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        boolean test = sharedPreferences.getBoolean("switch", false);
+        if(test)
+        {
+            f.setImage(index);
+        }
+        else
+        {
+            f.removeImage();
+        }
         f.setPokemon(item);
     }
 

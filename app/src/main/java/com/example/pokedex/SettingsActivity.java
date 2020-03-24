@@ -2,6 +2,7 @@ package com.example.pokedex;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.EditTextPreference;
@@ -12,6 +13,11 @@ import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceGroup;
 import android.preference.PreferenceManager;
+import android.preference.SwitchPreference;
+import android.util.Log;
+import android.widget.CompoundButton;
+import android.widget.Switch;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.Set;
@@ -22,7 +28,16 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         getFragmentManager().beginTransaction().replace(android.R.id.content, new SettingsFragment()).commit();
+        test();
     }
+
+    public void test()
+    {
+//        SharedPreferences preferences = this.getSharedPreferences("switch", Context.MODE_PRIVATE);
+//        SharedPreferences preferences = this.getSharedPreferences("switch", Context.MODE_PRIVATE);
+        boolean isChecked = getIntent().getBooleanExtra("switch", false);
+    }
+
 
     public static class SettingsFragment extends PreferenceFragment {
         @Override
@@ -32,7 +47,6 @@ public class SettingsActivity extends AppCompatActivity {
             addPreferencesFromResource(R.xml.settings);
 
             updateSummary(getPreferenceScreen());
-
         }
 
         private String updateSummary(Preference p)
