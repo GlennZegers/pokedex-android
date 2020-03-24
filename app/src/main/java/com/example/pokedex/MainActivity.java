@@ -5,10 +5,13 @@ import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements OverviewFragment.OnItemSelected{
 
@@ -25,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
     @Override
     public void onItemSelected(String item, int index) {
         DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
-        f.setPokemonImage(index);
+        f.setImage(index);
         f.setPokemon(item);
     }
 
