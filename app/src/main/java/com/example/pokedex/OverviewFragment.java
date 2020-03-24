@@ -110,24 +110,6 @@ public class OverviewFragment extends Fragment {
 
                     list.setLayoutManager(layoutManager);
                     list.setAdapter(pokemonAdapter);
-
-                    list.addOnItemTouchListener(new RecyclerView.OnItemTouchListener() {
-                        @Override
-                        public boolean onInterceptTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-                            return false;
-                        }
-
-                        @Override
-                        public void onTouchEvent(@NonNull RecyclerView rv, @NonNull MotionEvent e) {
-
-                        }
-
-                        @Override
-                        public void onRequestDisallowInterceptTouchEvent(boolean disallowIntercept) {
-
-                        }
-                    });
-
                 } catch (JSONException ex) {
                     Log.e("App", "Failure", ex);
                 }

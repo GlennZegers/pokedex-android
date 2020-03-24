@@ -14,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -22,34 +23,37 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 public class DetailFragment extends Fragment {
-    private int index;
+    private int index = 0;
     private HashMap<Integer,String> nicknames = new HashMap<Integer,String>();
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);;
-        //setContentView(R.layout.overview_fragment
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState){
         try {
-            FileInputStream fis = getContext().openFileInput("nickname.ser");
-            ObjectInputStream is = new ObjectInputStream(fis);
-            nicknames = (HashMap<Integer, String>) is.readObject();
-            is.close();
-            fis.close();
+            File file = getContext().getFileStreamPath("nickname.ser");
+            if(file != null && file.exists()) {
+                FileInputStream fis = getContext().openFileInput("nickname.ser");
+                ObjectInputStream is = new ObjectInputStream(fis);
+                nicknames = (HashMap<Integer, String>) is.readObject();
+                is.close();
+                fis.close();
+            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
-
         Button nameButton = view.findViewById(R.id.name_button);
         nameButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getContext(), NamingActivity.class);
-                intent.putExtra(Intent.EXTRA_INDEX, index);
-                startActivity(intent);
+                if(index != 0){
+                    Intent intent = new Intent(getContext(), NamingActivity.class);
+                    intent.putExtra(Intent.EXTRA_INDEX, index);
+                    startActivity(intent);
+                }
             }
         });
     }
@@ -74,7 +78,7 @@ public class DetailFragment extends Fragment {
         this.index = index;
         TextView t = getView().findViewById(R.id.Name);
         if(nicknames.containsKey(index)){
-            t.setText(nicknames.get(index) + "(" + pokemon +")");
+            t.setText(nicknames.get(index) + " (" + pokemon +")");
         }else{
             t.setText(pokemon);
         }

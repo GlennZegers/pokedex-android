@@ -35,9 +35,7 @@ public class NamingActivity extends AppCompatActivity {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
              requestPermissions(new String[]{Manifest.permission.READ_CONTACTS}, PERMISSIONS_REQUEST_READ_CONTACTS);
-            //After this point you wait for callback in onRequestPermissionsResult(int, String[], int[]) overriden method
         } else {
-            // Android version is lesser than 6.0 or the permission is already granted.
            this.setContacts();
         }
 
@@ -49,8 +47,7 @@ public class NamingActivity extends AppCompatActivity {
                 Intent intent = new Intent(NamingActivity.this, MainActivity.class);
                 intent.putExtra(Intent.EXTRA_INDEX, index);
                 EditText editText = (EditText)findViewById(R.id.editName);
-                Log.d("jeej", editText.getText().toString());
-                if(editText.getText().toString()  != "" && editText.getText().toString() != null ){
+                if(!editText.getText().toString().isEmpty() && editText.getText().toString() != null ){
                     intent.putExtra(Intent.EXTRA_TEXT,editText.getText().toString());
                 }else{
                     intent.putExtra(Intent.EXTRA_TEXT,spinner.getSelectedItem().toString());
@@ -69,10 +66,7 @@ public class NamingActivity extends AppCompatActivity {
     private void setContacts(){
         this.getContactList();
         Spinner spinner = findViewById(R.id.spinner);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                this, android.R.layout.simple_spinner_item, this.names);
-
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, this.names);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
     }
@@ -90,13 +84,8 @@ public class NamingActivity extends AppCompatActivity {
                 String name = cur.getString(cur.getColumnIndex(
                         ContactsContract.Contacts.DISPLAY_NAME));
 
-                if (cur.getInt(cur.getColumnIndex(
-                        ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
-                    Cursor pCur = cr.query(
-                            ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-                            null,
-                            ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?",
-                            new String[]{id}, null);
+                if (cur.getInt(cur.getColumnIndex(ContactsContract.Contacts.HAS_PHONE_NUMBER)) > 0) {
+                    Cursor pCur = cr.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI, null, ContactsContract.CommonDataKinds.Phone.CONTACT_ID + " = ?", new String[]{id}, null);
                     while (pCur.moveToNext()) {
                         names.add(name);
                     }
