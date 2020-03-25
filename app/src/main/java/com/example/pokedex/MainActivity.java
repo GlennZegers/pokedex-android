@@ -8,9 +8,12 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements OverviewFragment.OnItemSelected{
 
@@ -22,6 +25,14 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
         Toolbar myToolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(myToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        if(getIntent().hasExtra(getIntent().EXTRA_TEXT)){
+            try {
+                this.sendNickname(getIntent().getStringExtra(Intent.EXTRA_TEXT), getIntent().getIntExtra(Intent.EXTRA_INDEX,0));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     @Override
@@ -38,6 +49,11 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
             f.removeImage();
         }
         f.setPokemon(item);
+    }
+
+    public void sendNickname(String name, int index) throws IOException {
+        DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
+        f.setNickname(index, name);
     }
 
     @Override
@@ -61,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
             @Override
             public boolean onQueryTextSubmit(String query) {
                 DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
-                f.setPokemon(query);
+                f.setPokemon(query, 0);
                 return false;
             }
 
