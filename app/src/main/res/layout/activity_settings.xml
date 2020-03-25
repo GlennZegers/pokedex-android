@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".SettingsActivity">
+<!--<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"-->
+<!--    xmlns:app="http://schemas.android.com/apk/res-auto"-->
+<!--    xmlns:tools="http://schemas.android.com/tools"-->
+<!--    android:layout_width="match_parent"-->
+<!--    android:layout_height="match_parent"-->
+<!--    tools:context=".SettingsActivity">-->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+<!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <SwitchPreference
+        android:id="@+id/switch_title"
+        android:defaultValue="true"
+        android:key="show"
+        android:title="Show Images"/>
+<!--    <PreferenceScreen-->
+<!--        android:title="Specify Pokemon">-->
+<!--        <EditTextPreference-->
+<!--            android:inputType="textCapWords"-->
+<!--            android:key="name"-->
+<!--            android:title="Enter name"/>-->
+<!--&lt;!&ndash;        <ListPreference&ndash;&gt;-->
+<!--&lt;!&ndash;            android:entries="@array/pokemon_names"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:entryValues="@array/pokemon_values"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:key="pokemon"&ndash;&gt;-->
+<!--&lt;!&ndash;            android:title="Select Pokemon"/>&ndash;&gt;-->
+<!--    </PreferenceScreen>-->
+<!--    <PreferenceCategory-->
+<!--        android:title="Options">-->
+<!--        <CheckBoxPreference-->
+<!--            android:defaultValue="false"-->
+<!--            android:key="background"-->
+<!--            android:title="Background"/>-->
+<!--        <MultiSelectListPreference-->
+<!--            android:entries="@array/flipping_names"-->
+<!--            android:entryValues="@array/flipping_values"-->
+<!--            android:key="flipping"-->
+<!--            android:title="Select Flipping"/>-->
+<!--    </PreferenceCategory>-->
+</PreferenceScreen>

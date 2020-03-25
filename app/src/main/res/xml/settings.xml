@@ -1,22 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
+        android:id="@+id/switch_titel"
+        android:key="switch"
+        android:summaryOff="off"
+        android:summaryOn="on"
         android:defaultValue="true"
-        android:key="show"
-        android:title="Show Pokemon"/>
-    <PreferenceScreen
-        android:title="Specify Pokemon">
-        <EditTextPreference
-            android:inputType="textCapWords"
-            android:key="name"
-            android:title="Enter name"/>
-
-    </PreferenceScreen>
-    <PreferenceCategory
-        android:title="Options">
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="background"
-            android:title="Background"/>
-    </PreferenceCategory>
+        android:title="Show Image"/>
 </PreferenceScreen>
