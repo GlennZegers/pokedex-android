@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
         {
             f.removeImage();
         }
-        f.setPokemon(item);
+        f.setPokemon(item, index);
     }
 
     public void sendNickname(String name, int index) throws IOException {
