@@ -72,21 +72,6 @@ public class MainActivity extends AppCompatActivity implements OverviewFragment.
             }
         });
 
-        SearchView s = (SearchView) menu.findItem(R.id.toolbar_search).getActionView();
-        s.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                DetailFragment f = (DetailFragment) getSupportFragmentManager().findFragmentById(R.id.detailFragment);
-                f.setPokemon(query, 0);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                return false;
-            }
-        });
-
         return true;
 
     }

@@ -6,10 +6,4 @@
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Favorite"
         app:showAsAction="ifRoom"/>
-    <item
-        android:id="@+id/toolbar_search"
-        android:icon="@android:drawable/ic_search_category_default"
-        android:title="Search"
-        app:actionViewClass="androidx.appcompat.widget.SearchView"
-        app:showAsAction="never|collapseActionView"/>
 </menu>
